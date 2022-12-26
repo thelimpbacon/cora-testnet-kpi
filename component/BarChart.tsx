@@ -10,34 +10,10 @@ import {
   TimeScale,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import consolidate from "./consolidate";
-// import { format, parse } from  "chartjs-adapter-date-fns";
 import "chartjs-adapter-date-fns";
+import consolidate from "./consolidate";
 
 ChartJS.register(TimeScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
-// export const options = {
-//   scales: {
-//     xAxes: [
-//       {
-//         type: "time",
-//         time: {
-//           unit: "day",
-//           displayFormats: {
-//             day: "MMM D",
-//           },
-//         },
-//         sort: true,
-//       },
-//     ],
-//   },
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: "bottom" as const,
-//     },
-//   },
-// };
 
 const options: ChartOptions<"bar"> = {
   scales: {

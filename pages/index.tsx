@@ -1,5 +1,5 @@
-import AuroraTestnet from "./component/AuroraTestnet";
-import DegenscoreTestnet from "./component/DegenscoreTestnet";
+import AuroraTestnet from "../component/AuroraTestnet";
+import DegenscoreTestnet from "../component/DegenscoreTestnet";
 
 export default function Home() {
   return (
