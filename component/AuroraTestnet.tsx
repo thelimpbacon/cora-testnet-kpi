@@ -56,6 +56,9 @@ const AuroraTestnet = () => {
           deposits={data?.deposits}
           borrows={data?.borrows}
           repays={data?.repays}
+          signalWithdrawals={[]}
+          withdraws={[]}
+          collect={[]}
         />
       </div>
     </div>

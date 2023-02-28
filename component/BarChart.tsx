@@ -35,23 +35,46 @@ interface BarChartProps {
   deposits: Array<TimeStampShape>;
   borrows: Array<TimeStampShape>;
   repays: Array<TimeStampShape>;
+  signalWithdrawals: Array<TimeStampShape>;
+  withdraws: Array<TimeStampShape>;
+  collect: Array<TimeStampShape>;
 }
 
-const BarChart = ({ deposits, borrows, repays }: BarChartProps) => {
+const BarChart = ({
+  deposits,
+  borrows,
+  repays,
+  signalWithdrawals,
+  withdraws,
+  collect,
+}: BarChartProps) => {
   const [transactions, setTransactions] = React.useState({
     deposits: {},
     borrows: {},
     repays: {},
+    signalWithdrawals: {},
+    withdraw: {},
+    collect: {},
   });
 
   useEffect(() => {
-    const transactionsPerDay = consolidate({ deposits, borrows, repays });
+    const transactionsPerDay = consolidate({
+      deposits,
+      borrows,
+      repays,
+      signalWithdrawals,
+      withdraws,
+      collect,
+    });
     setTransactions({
       deposits: transactionsPerDay.deposits,
       borrows: transactionsPerDay.borrows,
       repays: transactionsPerDay.repays,
+      signalWithdrawals: transactionsPerDay.signalWithdrawals,
+      withdraw: transactionsPerDay.withdraws,
+      collect: transactionsPerDay.collect,
     });
-  }, [deposits, repays, borrows]);
+  }, [deposits, repays, borrows, signalWithdrawals, withdraws, collect]);
 
   return (
     <Bar
@@ -73,6 +96,21 @@ const BarChart = ({ deposits, borrows, repays }: BarChartProps) => {
             label: "Repays",
             data: Object.values(transactions?.repays),
             backgroundColor: "rgba(99, 255, 122, 0.8)",
+          },
+          {
+            label: "Signal Withdrawals",
+            data: Object.values(transactions?.signalWithdrawals),
+            backgroundColor: "rgba(255, 255, 99, 0.8)",
+          },
+          {
+            label: "Withdraws",
+            data: Object.values(transactions?.withdraw),
+            backgroundColor: "rgba(255, 99, 255, 0.8)",
+          },
+          {
+            label: "Collects",
+            data: Object.values(transactions?.collect),
+            backgroundColor: "rgba(99, 255, 255, 0.8)",
           },
         ],
       }}

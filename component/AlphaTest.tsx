@@ -1,41 +1,17 @@
-import { ApolloClient, gql, InMemoryCache, useQuery } from "@apollo/client";
 import React from "react";
 import BarChart from "./BarChart";
+import useSWR from "swr";
 
-const client = new ApolloClient({
-  uri: "https://api.thegraph.com/subgraphs/name/cora-protocol/cora-goerli-demo-testnet",
-  cache: new InMemoryCache(),
-});
+//@ts-ignore
+const fetcher = (...args: any[]) => fetch(...args).then((res) => res.json());
 
-const USER_TRANSACTIONS = gql`
-  query userTransactions {
-    users(first: 1000) {
-      id
-    }
-    deposits(first: 1000) {
-      id
-      timestamp
-    }
-    borrows(first: 1000) {
-      id
-      timestamp
-    }
-    repays(first: 1000) {
-      id
-      timestamp
-    }
-  }
-`;
+const AlphaTest = () => {
+  const { data } = useSWR("/api/coraTransactions", fetcher);
 
-const DegenscoreTestnet = () => {
-  const { data, loading } = useQuery(USER_TRANSACTIONS, {
-    client,
-    pollInterval: 60000,
-  });
   return (
     <div className="text-lg w-3/4">
       <h2 className="font-bold text-2xl w-full text-center mb-4">
-        Degenscore testnet (Görli)
+        Alpha Test (Görli)
       </h2>
       <div className="text-center mb-4">
         <p>
@@ -50,9 +26,27 @@ const DegenscoreTestnet = () => {
           <span className="mr-2">Borrows:</span>
           <span className="font-semibold">{data?.borrows?.length}</span>
         </p>
+
         <p>
           <span className="mr-2">Repays:</span>
           <span className="font-semibold">{data?.repays?.length}</span>
+        </p>
+
+        <p>
+          <span className="mr-2">Signal Withdraws:</span>
+          <span className="font-semibold">
+            {data?.signalWithdrawals?.length}
+          </span>
+        </p>
+
+        <p>
+          <span className="mr-2">Withdraws:</span>
+          <span className="font-semibold">{data?.withdraws?.length}</span>
+        </p>
+
+        <p>
+          <span className="mr-2">Collects:</span>
+          <span className="font-semibold">{data?.collects?.length}</span>
         </p>
       </div>
 
@@ -61,13 +55,13 @@ const DegenscoreTestnet = () => {
           deposits={data?.deposits}
           borrows={data?.borrows}
           repays={data?.repays}
-          signalWithdrawals={[]}
-          withdraws={[]}
-          collect={[]}
+          signalWithdrawals={data?.signalWithdrawals}
+          withdraws={data?.withdraws}
+          collect={data?.collect}
         />
       </div>
     </div>
   );
 };
 
-export default DegenscoreTestnet;
+export default AlphaTest;
