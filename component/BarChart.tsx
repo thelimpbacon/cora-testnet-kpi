@@ -18,10 +18,14 @@ ChartJS.register(TimeScale, LinearScale, BarElement, Title, Tooltip, Legend);
 const options: ChartOptions<"bar"> = {
   scales: {
     x: {
+      stacked: true,
       type: "time",
       time: {
         unit: "day",
       },
+    },
+    y: {
+      stacked: true,
     },
   },
 };
@@ -48,13 +52,15 @@ const BarChart = ({
   withdraws,
   collect,
 }: BarChartProps) => {
-  const [transactions, setTransactions] = React.useState({
-    deposits: {},
-    borrows: {},
-    repays: {},
-    signalWithdrawals: {},
-    withdraw: {},
-    collect: {},
+  const [transactions, setTransactions] = React.useState<
+    Record<string, Array<{ x: string; y: number }>>
+  >({
+    deposits: [],
+    borrows: [],
+    repays: [],
+    signalWithdrawals: [],
+    withdraw: [],
+    collect: [],
   });
 
   useEffect(() => {
@@ -80,36 +86,36 @@ const BarChart = ({
     <Bar
       options={options}
       data={{
-        labels: Object.keys(transactions?.deposits),
+        // labels: Object.keys(transactions?.deposits),
         datasets: [
           {
             label: "Deposits",
-            data: Object.values(transactions?.deposits),
+            data: transactions?.deposits,
             backgroundColor: "rgba(99, 109, 255, 0.8)",
           },
           {
             label: "Borrows",
-            data: Object.values(transactions?.borrows),
+            data: transactions?.borrows,
             backgroundColor: "rgba(255, 99, 133, 0.8)",
           },
           {
             label: "Repays",
-            data: Object.values(transactions?.repays),
+            data: transactions?.repays,
             backgroundColor: "rgba(99, 255, 122, 0.8)",
           },
           {
             label: "Signal Withdrawals",
-            data: Object.values(transactions?.signalWithdrawals),
+            data: transactions?.signalWithdrawals,
             backgroundColor: "rgba(255, 255, 99, 0.8)",
           },
           {
             label: "Withdraws",
-            data: Object.values(transactions?.withdraw),
+            data: transactions?.withdraw,
             backgroundColor: "rgba(255, 99, 255, 0.8)",
           },
           {
             label: "Collects",
-            data: Object.values(transactions?.collect),
+            data: transactions?.collect,
             backgroundColor: "rgba(99, 255, 255, 0.8)",
           },
         ],

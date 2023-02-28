@@ -1,9 +1,9 @@
 const consolidate = (
   data: Record<string, Array<{ timestamp: number; id: string }> | undefined>
-): Record<string, Record<string, number>> => {
+): Record<string, Array<{ x: string; y: number }>> => {
   if (!data) return {};
 
-  const transactionCount: Record<string, Record<string, number>> = {};
+  const transactionCount: Record<string, Array<{ x: string; y: number }>> = {};
 
   const labels = Object.keys(data);
 
@@ -20,7 +20,11 @@ const consolidate = (
         counts[dateString] = 1;
       }
     }
-    transactionCount[label] = counts;
+
+    const x = Object.entries(counts).map(([x, y]) => {
+      return { x, y };
+    });
+    transactionCount[label] = x;
   }
 
   return transactionCount;
