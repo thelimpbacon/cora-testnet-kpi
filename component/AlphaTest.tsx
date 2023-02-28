@@ -1,5 +1,5 @@
 import React from "react";
-import BarChart from "./BarChart";
+// import BarChart from "./BarChart";
 import useSWR from "swr";
 
 //@ts-ignore
@@ -50,7 +50,7 @@ const AlphaTest = () => {
         </p>
       </div>
 
-      <div>
+      {/* <div>
         <BarChart
           deposits={data?.deposits}
           borrows={data?.borrows}
@@ -59,7 +59,7 @@ const AlphaTest = () => {
           withdraws={data?.withdraws}
           collect={data?.collect}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
