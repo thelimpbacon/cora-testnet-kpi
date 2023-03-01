@@ -13,7 +13,7 @@ const AlphaTest = () => {
       <h2 className="font-bold text-2xl w-full text-center mb-4">
         Alpha Test (Görli)
       </h2>
-      <div className="mb-4 grid grid-cols-3 gap-2 text-left w-[40%] mx-auto">
+      <div className="mb-4 grid grid-cols-3 gap-6 text-left w-1/2 mx-auto">
         <div className="">
           <p>
             <span className="mr-2">Users:</span>
