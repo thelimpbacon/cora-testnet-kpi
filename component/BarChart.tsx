@@ -114,7 +114,7 @@ const BarChart = ({
             backgroundColor: "rgba(255, 99, 255, 0.8)",
           },
           {
-            label: "Collects",
+            label: "Collect collaterals",
             data: transactions?.collect,
             backgroundColor: "rgba(99, 255, 255, 0.8)",
           },

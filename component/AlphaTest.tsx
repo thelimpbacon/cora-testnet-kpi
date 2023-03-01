@@ -13,41 +13,49 @@ const AlphaTest = () => {
       <h2 className="font-bold text-2xl w-full text-center mb-4">
         Alpha Test (Görli)
       </h2>
-      <div className="text-center mb-4">
-        <p>
-          <span className="mr-2">Users:</span>
-          <span className="font-semibold">{data?.users?.length}</span>
-        </p>
-        <p>
-          <span className="mr-2">Deposits:</span>
-          <span className="font-semibold">{data?.deposits?.length}</span>
-        </p>
-        <p>
-          <span className="mr-2">Borrows:</span>
-          <span className="font-semibold">{data?.borrows?.length}</span>
-        </p>
+      <div className="mb-4 grid grid-cols-3 gap-2 text-left w-[40%] mx-auto">
+        <div className="">
+          <p>
+            <span className="mr-2">Users:</span>
+            <span className="font-semibold">{data?.users?.length}</span>
+          </p>
+        </div>
 
-        <p>
-          <span className="mr-2">Repays:</span>
-          <span className="font-semibold">{data?.repays?.length}</span>
-        </p>
+        <div>
+          <p>
+            <span className="mr-2">Deposits:</span>
+            <span className="font-semibold">{data?.deposits?.length}</span>
+          </p>
 
-        <p>
-          <span className="mr-2">Signal Withdraws:</span>
-          <span className="font-semibold">
-            {data?.signalWithdrawals?.length}
-          </span>
-        </p>
+          <p>
+            <span className="mr-2">Signal Withdraws:</span>
+            <span className="font-semibold">
+              {data?.signalWithdrawals?.length}
+            </span>
+          </p>
 
-        <p>
-          <span className="mr-2">Withdraws:</span>
-          <span className="font-semibold">{data?.withdraws?.length}</span>
-        </p>
+          <p>
+            <span className="mr-2">Withdraws:</span>
+            <span className="font-semibold">{data?.withdraws?.length}</span>
+          </p>
 
-        <p>
-          <span className="mr-2">Collects:</span>
-          <span className="font-semibold">{data?.collects?.length}</span>
-        </p>
+          <p>
+            <span className="mr-2">Collect collaterals:</span>
+            <span className="font-semibold">{data?.collects?.length}</span>
+          </p>
+        </div>
+
+        <div>
+          <p>
+            <span className="mr-2">Borrows:</span>
+            <span className="font-semibold">{data?.borrows?.length}</span>
+          </p>
+
+          <p>
+            <span className="mr-2">Repays:</span>
+            <span className="font-semibold">{data?.repays?.length}</span>
+          </p>
+        </div>
       </div>
 
       <div>
