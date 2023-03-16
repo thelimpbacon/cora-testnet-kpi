@@ -13,9 +13,8 @@ const getUsers = (transactions: Array<any>) => {
   return Array.from(users);
 };
 
-const extractFunctionName = (input: string) => {
-  const coraInterface = new Interface(LendingPoolAbi);
-  const parsedInput = coraInterface.parseTransaction({ data: input });
+const extractFunctionName = (input: string, iface: Interface) => {
+  const parsedInput = iface.parseTransaction({ data: input });
 
   return parsedInput?.name;
 };
@@ -29,10 +28,11 @@ const getTransactions = (
 ) => {
   const transactionList = transactions.map((transaction) => {
     const { timeStamp, input, isError } = transaction;
+    const coraInterface = new Interface(LendingPoolAbi);
 
     return {
       timestamp: timeStamp,
-      functionName: extractFunctionName(input),
+      functionName: extractFunctionName(input, coraInterface),
       isError: isError === "0" ? false : true,
     };
   });
