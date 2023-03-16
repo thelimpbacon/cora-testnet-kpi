@@ -1,16 +1,16 @@
 import Link from "next/link";
-import AlphaTest from "../component/AlphaTest";
+import MoonbaseAlpha from "../component/MoonbaseAlpha";
 
 export default function Home() {
   return (
     <main className="p-10">
-      <Link href="/moonbase">
+      <Link href="/">
         <button className="absolute rounded bg-green-600 text-white p-4">
-          Go to Moonbase Testnet
+          Go to Görli Testnet
         </button>
       </Link>
       <div className="flex flex-col gap-20 w-screen justify-center">
-        <AlphaTest />
+        <MoonbaseAlpha />
       </div>
     </main>
   );

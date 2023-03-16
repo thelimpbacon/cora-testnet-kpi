@@ -6,12 +6,12 @@ import useSWR from "swr";
 const fetcher = (...args: any[]) => fetch(...args).then((res) => res.json());
 
 const AlphaTest = () => {
-  const { data } = useSWR("/api/coraTransactions", fetcher);
+  const { data } = useSWR("/api/coraTransactions_moonbase", fetcher);
 
   return (
     <div className="text-lg w-3/4">
       <h2 className="font-bold text-2xl w-full text-center mb-4">
-        Alpha Test (Görli)
+        Moonbase Alpha Testnet
       </h2>
       <div className="mb-4 grid grid-cols-3 gap-6 text-left w-1/2 mx-auto">
         <div className="">
