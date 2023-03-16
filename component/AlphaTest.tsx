@@ -38,11 +38,6 @@ const AlphaTest = () => {
             <span className="mr-2">Withdraws:</span>
             <span className="font-semibold">{data?.withdraws?.length}</span>
           </p>
-
-          <p>
-            <span className="mr-2">Collect collaterals:</span>
-            <span className="font-semibold">{data?.collects?.length}</span>
-          </p>
         </div>
 
         <div>
@@ -54,6 +49,11 @@ const AlphaTest = () => {
           <p>
             <span className="mr-2">Repays:</span>
             <span className="font-semibold">{data?.repays?.length}</span>
+          </p>
+
+          <p>
+            <span className="mr-2">Collect collaterals:</span>
+            <span className="font-semibold">{data?.collects?.length}</span>
           </p>
         </div>
       </div>
